@@ -1,0 +1,13 @@
+langchain
+langchain-core
+langchain-community
+langchain-huggingface
+langchain-groq
+langgraph  
+python-dotenv
+newsapi-python
+beautifulsoup4
+ipython
+nest_asyncio
+streamlit
+requests
