@@ -1,0 +1,27 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	generate_newsapi_params(generate_newsapi_params)
+	retrieve_articles_metadata(retrieve_articles_metadata)
+	retrieve_articles_text(retrieve_articles_text)
+	select_top_urls(select_top_urls)
+	summarize_articles_parallel(summarize_articles_parallel)
+	format_results(format_results)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> generate_newsapi_params;
+	generate_newsapi_params --> retrieve_articles_metadata;
+	retrieve_articles_metadata --> retrieve_articles_text;
+	retrieve_articles_text -. &nbsp;END&nbsp; .-> __end__;
+	retrieve_articles_text -.-> generate_newsapi_params;
+	retrieve_articles_text -.-> select_top_urls;
+	select_top_urls --> summarize_articles_parallel;
+	summarize_articles_parallel -. &nbsp;END&nbsp; .-> __end__;
+	summarize_articles_parallel -.-> format_results;
+	format_results --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
