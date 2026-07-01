@@ -1,6 +1,6 @@
 import os
 from typing import Dict, TypedDict, Annotated, List, Optional
-from langgraph.graph import Graph, END, START
+from langgraph.graph import StateGraph, END, START
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from pydantic import BaseModel, Field
@@ -278,7 +278,7 @@ def articles_text_decision(state: GraphState) -> str:
             return "select_top_urls"
         
 
-workflow = Graph()
+workflow = StateGraph(GraphState)
 
 workflow.add_node("generate_newsapi_params", generate_newsapi_params)
 workflow.add_node("retrieve_articles_metadata", retrieve_articles_metadata)
